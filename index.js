@@ -34,6 +34,7 @@ function gulpReplaceDiv(cls, replace) {
 	return stream; 
 };
 
+gulpReplaceDiv.replace_div = replace_div;
 
 // Exporting the plugin main function
 module.exports = gulpReplaceDiv;
