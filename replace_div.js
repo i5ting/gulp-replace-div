@@ -14,4 +14,6 @@ function replace_div(t, clz, repl){
   return t.replace(_reg, _repl)
 }
 
+replace_div.reg = reg
+
 module.exports = replace_div;
