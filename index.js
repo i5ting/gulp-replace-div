@@ -5,21 +5,7 @@ var PluginError = gutil.PluginError;
 // Consts
 const PLUGIN_NAME = 'gulp-replace-div';
 
-function reg(clz){
-  return new RegExp("<div[^>]*class=." + clz + ".[^>]*>([^<]*)<\/div>", 'g')
-}
-
-function replace_div(t, clz, repl){
-  var _repl = ''
-  
-  if (repl) {
-    _repl = repl
-  }
-  
-  var _reg = reg(clz)
-
-  return t.replace(_reg, _repl)
-}
+var replace_div = require('./replace_div')
 
 // Plugin level function(dealing with files)
 function gulpReplaceDiv(cls, replace) {
@@ -32,8 +18,6 @@ function gulpReplaceDiv(cls, replace) {
   if (replace) {
     _replace = replace;
   }
-  
-  var _reg = reg(cls);
   
   // Creating a stream through which each file will pass
 	var stream = through.obj(function(file, enc, callback) {
@@ -49,6 +33,7 @@ function gulpReplaceDiv(cls, replace) {
   // returning the file stream
 	return stream; 
 };
+
 
 // Exporting the plugin main function
 module.exports = gulpReplaceDiv;
